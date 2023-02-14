@@ -21,7 +21,7 @@ body {
   margin: 0;
 }
 
-.Example__container {
+.container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,39 +29,39 @@ body {
   padding: 10px;
 }
 
-.Example__container__load {
+.container__load {
   margin-top: 1em;
   color: white;
 }
 
-.Example__container__document {
+.container__document {
   margin: 1em 0;
 }
 
-.Example__container__document .react-pdf__Document {
+.container__document .react-pdf__Document {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.Example__container__document .react-pdf__Page {
+.container__document .react-pdf__Page {
   max-width: calc(100% - 2em);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   margin: 1em;
 }
 
-.Example__container__document .react-pdf__Page canvas {
+.container__document .react-pdf__Page canvas {
   max-width: 100%;
   height: auto !important;
 }
 
-.Example__container__document .react-pdf__message {
+.container__document .react-pdf__message {
   padding: 20px;
   color: white;
 }
 
 
-.Example__container__sidebar {
+.container__sidebar {
   margin: 1em 0;
   display: flex;
   flex-direction: row;

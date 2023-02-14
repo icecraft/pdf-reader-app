@@ -28,19 +28,19 @@ export default function MyView() {
       <header>
         <h1>react-pdf sample page</h1>
       </header>
-      <div className="Example__container">
-        <div className="Example__container__load">
+      <div className="container">
+        <div className="container__load">
           <label htmlFor="file">Load from file:</label>{' '}
           <input onChange={onFileChange} type="file" />
         </div>
-        <div className="Example__container__document">
+        <div className="container__document">
           <Document file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
             {Array.from(new Array(numPages), (el, index) => (
               <Page key={`page_${index + 1}`} pageNumber={index + 1} />
             ))}
           </Document>
         </div>
-        <div className='Example__container__sidebar'> 
+        <div className='container__sidebar'> 
               <h1> Hello, This is Sidebar !!</h1>
         </div>
       </div>
