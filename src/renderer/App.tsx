@@ -1,50 +1,71 @@
-import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
-import './App.css';
 
-function Hello() {
-  return (
-    <div>
-      <div className="Hello">
-        <img width="200" alt="icon" src={icon} />
-      </div>
-      <h1>electron-react-boilerplate</h1>
-      <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Read our docs
-          </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="folded hands">
-              🙏
-            </span>
-            Donate
-          </button>
-        </a>
-      </div>
-    </div>
-  );
-}
+import React from 'react';
+import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import type { MenuProps } from 'antd';
+import { Breadcrumb, Layout, Menu, theme } from 'antd';
 
-export default function App() {
+import PdfView from '../components/PdfView';
+
+const { Header, Content, Footer, Sider } = Layout;
+
+const items1: MenuProps['items'] = ['1', '2'].map((key) => ({
+  key,
+  label: `nav ${key}`,
+}));
+
+const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
+  (icon, index) => {
+    const key = String(index + 1);
+
+    return {
+      key: `sub${key}`,
+      icon: React.createElement(icon),
+      label: `subnav ${key}`,
+
+      children: new Array(2).fill(null).map((_, j) => {
+        const subKey = index * 2 + j + 1;
+        return {
+          key: subKey,
+          label: `option${subKey}`,
+        };
+      }),
+    };
+  },
+);
+
+const App: React.FC = () => {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Hello />} />
-      </Routes>
-    </Router>
+    <Layout>
+      <Header className="header">
+        <div className="logo" />
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
+      </Header>
+      <Content style={{ padding: '0 50px' }}>
+        {/*
+        <Breadcrumb style={{ margin: '16px 0' }}>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+        </Breadcrumb>
+        */}
+
+        <Layout style={{ padding: '24px 0', background: colorBgContainer }}>
+          <Content style={{ padding: '0 24px', minHeight: 280 }}> 
+              <PdfView/> 
+          </Content>
+
+        {/*
+          <Sider>
+            <p> right sidbar </p>
+          </Sider>
+      */}
+        </Layout>
+      </Content>
+      <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
+    </Layout>
   );
-}
+};
+
+export default App;
