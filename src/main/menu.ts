@@ -251,7 +251,7 @@ export default class MenuBuilder {
 
                     if (path ) {
                         if (path.constructor === Array) {
-                          console.log("from main.ts", path);
+                            console.log("from main.ts", path);
                             let pdfFilePath = path[0];
                             this.mainWindow.webContents.send("openNewPdf", pdfFilePath);
                           };
