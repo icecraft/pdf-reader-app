@@ -2,6 +2,7 @@ import {
   app,
   Menu,
   shell,
+  dialog,
   BrowserWindow,
   MenuItemConstructorOptions,
 } from 'electron';
@@ -239,6 +240,25 @@ export default class MenuBuilder {
                     this.mainWindow.webContents.toggleDevTools();
                   },
                 },
+                {
+                  label: "Open File",
+                  click: () => {
+                    let path = dialog.showOpenDialogSync({
+                      filters: [{ name: 'PDF', extensions: ['pdf'] }],
+                      properties: ['openFile']
+                    });
+                    console.log("from main.ts", path);
+
+                    if (path ) {
+                        if (path.constructor === Array) {
+                          console.log("from main.ts", path);
+                            let pdfFilePath = path[0];
+                            this.mainWindow.webContents.send("openNewPdf", pdfFilePath);
+                          };
+                    };
+                  },
+                },
+
               ]
             : [
                 {

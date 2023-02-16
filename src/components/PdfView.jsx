@@ -29,10 +29,14 @@ export default function PdfView() {
         <h1>react-pdf sample page</h1>
       </header>
       <div className="container">
+
+        {/*
         <div className="container__load">
           <label htmlFor="file">Load from file:</label>{' '}
           <input onChange={onFileChange} type="file" />
         </div>
+        */}
+        
         <div className="container__document">
           <Document file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
             {Array.from(new Array(numPages), (el, index) => (
