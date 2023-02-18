@@ -2,11 +2,11 @@
 import React from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import {Layout, Menu, theme } from 'antd';
 
 import PdfView from '../components/PdfView';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer} = Layout;
 
 const items1: MenuProps['items'] = ['1', '2'].map((key) => ({
   key,
@@ -33,11 +33,12 @@ const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOu
   },
 );
 
-const App: React.FC = () => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
 
+const App: React.FC = () => {
+
+  const {
+       token: { colorBgContainer },
+    } = theme.useToken();
   return (
     <Layout>
       <Header className="header">
