@@ -5,7 +5,6 @@ import { createRoot } from 'react-dom/client';
 import { LOAD_PDF } from 'constants/actionTypes';
 
 
-
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 root.render( <Provider store={store}>
@@ -15,7 +14,7 @@ root.render( <Provider store={store}>
 
 window.electron.ipcRenderer.on("openNewPdf", function(event, args)  {
   store.dispatch({type: LOAD_PDF, payload:event});
-  console.log("DUMP from render", event, args);
+  console.log("DUMP from render", typeof event);
   console.log("read state", store.getState());
 })
 

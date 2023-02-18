@@ -7,4 +7,6 @@ const rootReducer = combineReducers({
   pdfViewState: pdfViewReducer,
 });
 
+
 export default rootReducer;
+

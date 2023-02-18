@@ -16,11 +16,19 @@ const options = {
 export default function PdfView() {
   const pdfView = useSelector(state => state.pdfViewState);
 
+  const [file, setFile] = useState('./notes.pdf');
+
   const [numPages, setNumPages] = useState(null);
 
   function onDocumentLoadSuccess({ numPages: nextNumPages }) {
     setNumPages(nextNumPages);
   }
+
+  function onFileChange(event) {
+    console.log("open file on pdfView", event);
+    setFile(event.target.files[0]);
+  }
+
 
   return (
     <div className="Example">
@@ -28,15 +36,21 @@ export default function PdfView() {
         <h1>react-pdf sample page</h1>
         <button
         className="btn btn-outline-secondary"
-        onClick={() => { console.log("state", pdfView);} }
+        onClick={() => { console.log("state", pdfView.pdf_file, "file", file);} }
       >
         Decrease Counter
       </button>
+
       </header>
       <div className="container">
-        
+
+        <div className="container__load">
+          <label htmlFor="file">Load from file:</label>{' '}
+          <input onChange={onFileChange} type="file" />
+        </div>
+
         <div className="container__document">
-          <Document file={pdfView.pdf_file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
+          <Document file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
             {Array.from(new Array(numPages), (el, index) => (
               <Page key={`page_${index + 1}`} pageNumber={index + 1} />
             ))}

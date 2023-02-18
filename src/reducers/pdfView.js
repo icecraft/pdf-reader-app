@@ -3,7 +3,8 @@ import {
   } from '../constants/actionTypes';
   
 const initState = {
-  pdf_file: ""
+  pdf_file: ''
+
 }
 
 function pdfViewReducer (state = initState, action) {
@@ -19,4 +20,4 @@ function pdfViewReducer (state = initState, action) {
   };
   
 
-  export default pdfViewReducer;
+export default pdfViewReducer;
