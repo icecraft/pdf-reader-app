@@ -1,9 +1,15 @@
-import { createRoot } from 'react-dom/client';
 import App from './App';
+import { Provider } from 'react-redux';
+import ReactDOM from 'react-dom';
+import store from '../store';
 
-const container = document.getElementById('root')!;
-const root = createRoot(container);
-root.render(<App />);
+
+ReactDOM.render((
+  <Provider store={store}>
+    <App />
+  </Provider>
+
+), document.getElementById('root'));
 
 
 window.electron.ipcRenderer.on("openNewPdf", function(event, args)  {
