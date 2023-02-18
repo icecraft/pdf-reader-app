@@ -34,13 +34,6 @@ export default function PdfView() {
     <div className="Example">
       <header>
         <h1>react-pdf sample page</h1>
-        <button
-        className="btn btn-outline-secondary"
-        onClick={() => { console.log("state", pdfView.pdf_file, "file", file);} }
-      >
-        Decrease Counter
-      </button>
-
       </header>
       <div className="container">
 
