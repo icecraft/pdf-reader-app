@@ -3,7 +3,7 @@ import {
   } from '../constants/actionTypes';
   
 const initState = {
-  pdf_file: ''
+  pdf_file: ""
 
 }
 

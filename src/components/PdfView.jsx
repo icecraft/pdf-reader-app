@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
@@ -13,9 +13,14 @@ const options = {
 };
 
 export default function PdfView() {
+  const pdfView = useSelector(state => state.pdfViewState);
+
   const [file, setFile] = useState(null);
 
   const [numPages, setNumPages] = useState(null);
+
+  const scale = 1.7 ;
+  const width = 700;
 
   function onDocumentLoadSuccess({ numPages: nextNumPages }) {
     setNumPages(nextNumPages);
@@ -28,20 +33,18 @@ export default function PdfView() {
 
   return (
     <div className="Example">
-      <header>
-        <h1>react-pdf sample page</h1>
-      </header>
       <div className="container">
-        
+        {/*
         <div className="container__load">
           <label htmlFor="file">Load from file:</label>{' '}
           <input onChange={onFileChange} type="file" />
         </div>
+        */}
 
         <div className="container__document">
-          <Document file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
+          <Document file={pdfView.pdf_file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
             {Array.from(new Array(numPages), (el, index) => (
-              <Page key={`page_${index + 1}`} pageNumber={index + 1} />
+              <Page key={`page_${index + 1}`} pageNumber={index + 1} scale={scale} width={width} />
             ))}
           </Document>
         </div>
