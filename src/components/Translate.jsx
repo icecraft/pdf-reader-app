@@ -8,13 +8,15 @@ export default function Translate() {
 
   return (
     <div>
-      <p> word: {translateS.word} </p>
-      <p> 中文释义: {translateS.cn} </p>
-      <p> English Meaning: {translateS.english} </p>
+      <p> word &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : {translateS.word} </p>
+      <p> 中文释义 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : {translateS.cn} </p>
+      <p> English Meaning &nbsp;: {translateS.english} </p>
       <Divider />
+      <p > Examples: </p> 
       <ul> 
-        Examples: 
-       {translateS.examples}.map((example) => <li>{example}</li>)
+       {
+         translateS.examples.map((example) => (<li>{example}</li>))
+       }
       </ul>
     </div>
   );

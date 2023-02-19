@@ -52,7 +52,9 @@ const App: React.FC = () => {
               <PdfView/> 
           </Content>
           <Sider width="350" style={{padding: '24px 0', background: colorBgContainer}}>
-            <Translate />
+            <div style={{  position: "fixed" }}>
+              <Translate />
+            </div>
           </Sider>
         </Layout>
       </Content>

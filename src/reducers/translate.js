@@ -3,10 +3,10 @@ import {
   } from '../constants/actionTypes';
   
 const initState = {
-  word: "",
-  cn: "",
-  english: "",
-  examples: [],
+  word: "bee",
+  cn: "蜜蜂",
+  english: "any of numerous hairy-bodied insects including social and solitary species",
+  examples: ["a swarm of bees", "Bees were buzzing in the clover."],
   synonyms: []
 }
 
@@ -18,7 +18,7 @@ function translateReducer (state = initState, action) {
           word: action.payload.word,
           cn: action.payload.cn,
           english: action.payload.english,
-          examples: action.payload:examples,
+          examples: action.payload.examples,
           synonyms: action.payload.synonyms
         };
       default:
