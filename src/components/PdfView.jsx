@@ -12,11 +12,8 @@ const options = {
   standardFontDataUrl: 'standard_fonts/',
 };
 
-
 export default function PdfView() {
-  const pdfView = useSelector(state => state.pdfViewState);
-
-  const [file, setFile] = useState('./notes.pdf');
+  const [file, setFile] = useState(null);
 
   const [numPages, setNumPages] = useState(null);
 
@@ -25,7 +22,6 @@ export default function PdfView() {
   }
 
   function onFileChange(event) {
-    console.log("open file on pdfView", event);
     setFile(event.target.files[0]);
   }
 
@@ -36,7 +32,7 @@ export default function PdfView() {
         <h1>react-pdf sample page</h1>
       </header>
       <div className="container">
-
+        
         <div className="container__load">
           <label htmlFor="file">Load from file:</label>{' '}
           <input onChange={onFileChange} type="file" />
