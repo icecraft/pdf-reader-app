@@ -26,21 +26,9 @@ export default function PdfView() {
     setNumPages(nextNumPages);
   }
 
-  function onFileChange(event) {
-    setFile(event.target.files[0]);
-  }
-
-
   return (
     <div className="Example">
       <div className="container">
-        {/*
-        <div className="container__load">
-          <label htmlFor="file">Load from file:</label>{' '}
-          <input onChange={onFileChange} type="file" />
-        </div>
-        */}
-
         <div className="container__document">
           <Document file={pdfView.pdf_file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
             {Array.from(new Array(numPages), (el, index) => (

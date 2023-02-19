@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Layout, Modal, theme, Button} from 'antd';
 import PdfView from '../components/PdfView';
+import Translate from '../components/Translate';
 
 const { Header, Content, Sider, Footer} = Layout;
 
@@ -51,7 +52,7 @@ const App: React.FC = () => {
               <PdfView/> 
           </Content>
           <Sider width="350" style={{padding: '24px 0', background: colorBgContainer}}>
-            <p> right sidbar </p>
+            <Translate />
           </Sider>
         </Layout>
       </Content>
