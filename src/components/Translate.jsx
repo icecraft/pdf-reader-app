@@ -15,7 +15,7 @@ export default function Translate() {
       <p > Examples: </p> 
       <ul> 
        {
-         translateS.examples.map((example) => (<li>{example}</li>))
+         translateS.examples.map((example, index) => (<li key={index}>{example}</li>))
        }
       </ul>
     </div>

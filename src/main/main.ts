@@ -9,11 +9,18 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import { app, BrowserWindow, shell, Notification, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import axios from 'axios';
+
+const contextMenu = require('electron-context-menu');
+
+contextMenu({
+	showSaveImageAs: true
+});
 
 class AppUpdater {
   constructor() {
@@ -112,6 +119,18 @@ const createWindow = async () => {
     return { action: 'deny' };
   });
 
+  mainWindow.webContents.on('context-menu', function (event, params) {
+    // new Notification({ title: "hello", body: params.selectionText }).show();
+    axios.get('http://127.0.0.1:8001/api/translate/' + params.selectionText.trim())
+    .then(function (response: any) {
+      // handle success
+      console.log(response);
+    })
+    .catch(function (error: Error) {
+      // handle error
+      console.log(error);
+    });
+});
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
   new AppUpdater();
