@@ -2,15 +2,15 @@
 /* eslint no-unused-vars: off */
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
-export type Channels = 'ipc-example' | 'openNewPdf';
+export type Channels = 'ipc-example' | 'openNewPdf' | "translateWord";
 
 const electronHandler = {
   ipcRenderer: {
-    sendMessage(channel: Channels, args: unknown[]) {
+    sendMessage(channel: Channels, args: string[]) {
       ipcRenderer.send(channel, args);
     },
-    on(channel: Channels, func: (...args: unknown[]) => void) {
-      const subscription = (_event: IpcRendererEvent, ...args: unknown[]) =>
+    on(channel: Channels, func: (...args: string[]) => void) {
+      const subscription = (_event: IpcRendererEvent, ...args: string[]) =>
         func(...args);
       ipcRenderer.on(channel, subscription);
 

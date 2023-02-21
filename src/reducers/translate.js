@@ -5,7 +5,7 @@ import {
 const initState = {
   word: "bee",
   cn: "蜜蜂",
-  english: "any of numerous hairy-bodied insects including social and solitary species",
+  english: ["any of numerous hairy-bodied insects including social and solitary species"],
   examples: ["a swarm of bees", "Bees were buzzing in the clover."],
   synonyms: []
 }

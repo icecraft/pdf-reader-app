@@ -8,9 +8,16 @@ export default function Translate() {
 
   return (
     <div>
-      <p> word &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : {translateS.word} </p>
-      <p> 中文释义 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : {translateS.cn} </p>
-      <p> English Meaning &nbsp;: {translateS.english} </p>
+      <p> word &nbsp; :  &nbsp;&nbsp; {translateS.word} </p>
+      <Divider />
+      <p> CN &nbsp; &nbsp; :  &nbsp;&nbsp; {translateS.cn} </p>
+      <Divider />
+      <p> EN: </p>
+      <ul> 
+       {
+         translateS.english.map((example, index) => (<li key={index}>{example}</li>))
+       }
+      </ul>
       <Divider />
       <p > Examples: </p> 
       <ul> 

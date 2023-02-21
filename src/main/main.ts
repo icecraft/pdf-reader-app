@@ -32,14 +32,6 @@ class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
-/*
-ipcMain.on('ipc-example', async (event, arg) => {
-  const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
-  console.log(msgTemplate(arg));
-  event.reply('ipc-example', msgTemplate('pong'));
-});
-*/
-
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
   sourceMapSupport.install();
@@ -120,14 +112,20 @@ const createWindow = async () => {
   });
 
   mainWindow.webContents.on('context-menu', function (event, params) {
-    // new Notification({ title: "hello", body: params.selectionText }).show();
+    let word = params.selectionText.trim();
+    if (word == "") {
+      return 
+    }
     axios.get('http://127.0.0.1:8001/api/translate/' + params.selectionText.trim())
     .then(function (response: any) {
       // handle success
-      console.log(response);
+      // console.log(response.data);
+      let message = JSON.stringify(response.data);
+      mainWindow?.webContents.send("translateWord", message);
     })
     .catch(function (error: Error) {
       // handle error
+      new Notification({title: "取词翻译", body: error.message}).show();
       console.log(error);
     });
 });
