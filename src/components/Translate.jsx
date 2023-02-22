@@ -15,7 +15,7 @@ export default function Translate() {
       <p> EN: </p>
       <ul> 
        {
-         translateS.english.map((example, index) => (<li key={index}>{example}</li>))
+         translateS.en.map((example, index) => (<li key={index}>{example}</li>))
        }
       </ul>
       <Divider />

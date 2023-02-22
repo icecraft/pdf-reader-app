@@ -48,10 +48,10 @@ const App: React.FC = () => {
 
       <Content style={{ padding: '0 50px' }}>
         <Layout style={{ padding: '24px 0', background: colorBgContainer }}>
-          <Content style={{ padding: '0 24px', minHeight: 765 }}> 
+          <Content style={{ padding: '0 2px', minHeight: 765 }}> 
               <PdfView/> 
           </Content>
-          <Sider width="350" style={{padding: '24px 0', background: colorBgContainer}}>
+          <Sider width="420" style={{padding: '2px 0', background: colorBgContainer}}>
             <div style={{  position: "fixed" }}>
               <Translate />
             </div>

@@ -27,7 +27,6 @@ export default function PdfView() {
   }
 
   return (
-    <div className="Example">
       <div className="container">
         <div className="container__document">
           <Document file={pdfView.pdf_file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
@@ -36,7 +35,6 @@ export default function PdfView() {
             ))}
           </Document>
         </div>
-      </div>
     </div>
   );
 }
